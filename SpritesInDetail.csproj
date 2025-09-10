@@ -1,14 +1,20 @@
 <Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <TargetFramework>net5.0</TargetFramework>
+    <TargetFramework>net48</TargetFramework>
     <Nullable>enable</Nullable>
-
-	  <EnableHarmony>true</EnableHarmony>
+    <CopyLocalLockFileAssemblies>true</CopyLocalLockFileAssemblies>
   </PropertyGroup>
 
   <ItemGroup>
     <PackageReference Include="Pathoschild.Stardew.ModBuildConfig" Version="4.0.2" />
+    <PackageReference Include="HarmonyLib" Version="2.2.2" />
+    <PackageReference Include="Microsoft.Xna.Framework" Version="4.0.0.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Compile Include="libs\IContentPatcherAPI.cs" />
+    <Compile Include="libs\IGenericModConfigMenu.cs" />
   </ItemGroup>
 
   <ItemGroup>
