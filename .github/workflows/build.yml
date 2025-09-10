@@ -1,0 +1,35 @@
+name: Build SpritesInDetail
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+
+      - name: Setup .NET
+        uses: actions/setup-dotnet@v3
+        with:
+          dotnet-version: 5.0.x
+
+      - name: Restore dependencies
+        run: dotnet restore SpritesInDetail.sln
+
+      - name: Build project
+        run: dotnet build SpritesInDetail.sln -c Release -o build/
+
+      - name: List build artifacts
+        run: ls -R build/
+
+      - name: Upload build artifact
+        uses: actions/upload-artifact@v3
+        with:
+          name: SpritesInDetail-DLL
+          path: build/
